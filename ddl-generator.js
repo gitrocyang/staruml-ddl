@@ -119,6 +119,10 @@ class DDLGenerator {
     if (elem.primaryKey || !elem.nullable) {
       line += ' NOT NULL'
     }
+    //if mysql and has documentation then out comment
+    if (options.dbms === 'mysql' && elem.documentation.trim().length > 0){    	
+			line += " COMMENT '" + elem.documentation + "'"
+		}
     return line
   }
 
@@ -229,7 +233,12 @@ class DDLGenerator {
     }
 
     codeWriter.outdent()
-    codeWriter.writeLine(');')
+    //if mysql and has documentation then out comment
+    if (options.dbms === 'mysql' && elem.documentation.trim().length > 0){    	
+			codeWriter.writeLine(") COMMENT '" + elem.documentation + "';")
+		} else {
+    	codeWriter.writeLine(');')
+  	}
     codeWriter.writeLine()
   }
 
