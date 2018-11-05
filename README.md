@@ -1,3 +1,5 @@
+2018.11.05 add mysql Table and Column comment to DDL
+
 DDL Extension for StarUML
 =========================
 
