@@ -121,8 +121,8 @@ class DDLGenerator {
     }
     //if mysql and has documentation then out comment
     if (options.dbms === 'mysql' && elem.documentation.trim().length > 0){    	
-			line += " COMMENT '" + elem.documentation + "'"
-		}
+	  line += " COMMENT '" + elem.documentation + "'"
+	}
     return line
   }
 
@@ -235,9 +235,9 @@ class DDLGenerator {
     codeWriter.outdent()
     //if mysql and has documentation then out comment
     if (options.dbms === 'mysql' && elem.documentation.trim().length > 0){    	
-			codeWriter.writeLine(") COMMENT '" + elem.documentation + "';")
-		} else {
-    	codeWriter.writeLine(');')
+	  codeWriter.writeLine(") COMMENT '" + elem.documentation + "';")
+	} else {
+      codeWriter.writeLine(');')
   	}
     codeWriter.writeLine()
   }
